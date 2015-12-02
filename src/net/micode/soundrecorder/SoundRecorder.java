@@ -111,9 +111,9 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
     private boolean mShowFinishButton = false;
 
     private String mErrorUiMessage = null; // Some error messages are displayed
-                                           // in the UI, not a dialog. This
-                                           // happens when a recording
-                                           // is interrupted for some reason.
+    // in the UI, not a dialog. This
+    // happens when a recording
+    // is interrupted for some reason.
 
     private long mMaxFileSize = -1; // can be specified in the intent
 
@@ -775,7 +775,7 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
      * A simple utility to do a query into the databases.
      */
     private Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
-            String sortOrder) {
+                         String sortOrder) {
         try {
             ContentResolver resolver = getContentResolver();
             if (resolver == null) {
@@ -792,8 +792,8 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
      * maintain the play_order in the playlist.
      */
     private void addToPlaylist(ContentResolver resolver, int audioId, long playlistId) {
-        String[] cols = new String[] {
-            "count(*)"
+        String[] cols = new String[]{
+                "count(*)"
         };
         Uri uri = MediaStore.Audio.Playlists.Members.getContentUri("external", playlistId);
         Cursor cur = resolver.query(uri, cols, null, null, null);
@@ -811,12 +811,12 @@ public class SoundRecorder extends Activity implements Button.OnClickListener,
      */
     private int getPlaylistId(Resources res) {
         Uri uri = MediaStore.Audio.Playlists.getContentUri("external");
-        final String[] ids = new String[] {
-            MediaStore.Audio.Playlists._ID
+        final String[] ids = new String[]{
+                MediaStore.Audio.Playlists._ID
         };
         final String where = MediaStore.Audio.Playlists.NAME + "=?";
-        final String[] args = new String[] {
-            res.getString(R.string.audio_db_playlist_name)
+        final String[] args = new String[]{
+                res.getString(R.string.audio_db_playlist_name)
         };
         Cursor cursor = query(uri, ids, where, args, null);
         if (cursor == null) {
